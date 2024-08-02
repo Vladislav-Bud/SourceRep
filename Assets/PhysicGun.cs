@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PhysicGun : MonoBehaviour
@@ -11,6 +12,7 @@ public class PhysicGun : MonoBehaviour
     private float _velocity = 15f;
     [SerializeField, Min(.1f)]
     private float _mass = 5f;
+    public bool my_code;
 
     private IEnumerator Start()
     {
@@ -27,6 +29,25 @@ public class PhysicGun : MonoBehaviour
             body.interpolation = RigidbodyInterpolation.Interpolate;
             body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             Destroy(obj, 10f);
+        }
+    }
+    
+    
+    private void Update()
+    {
+        if (my_code)
+        {
+            if (transform.position.z < 6f)
+            {
+                while (transform.position.z < 6f)
+                    transform.position += new Vector3(0, 0, 3f);
+            }
+
+            else
+            {
+                while (transform.position.z > -6f)
+                    transform.position += new Vector3(0, 0, -3f);
+            }
         }
     }
 }
