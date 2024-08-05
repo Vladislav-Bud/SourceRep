@@ -12,7 +12,6 @@ public class PhysicGun : MonoBehaviour
     private float _velocity = 15f;
     [SerializeField, Min(.1f)]
     private float _mass = 5f;
-    public bool my_code;
 
     private IEnumerator Start()
     {
@@ -31,23 +30,29 @@ public class PhysicGun : MonoBehaviour
             Destroy(obj, 10f);
         }
     }
-    
-    
-    private void Update()
+    public IEnumerator Gun_Mover(bool side, Vector3 pos, float Target_time)
     {
-        if (my_code)
-        {
-            if (transform.position.z < 6f)
+            if (side)
             {
-                while (transform.position.z < 6f)
-                    transform.position += new Vector3(0, 0, 3f);
+                var time = 0f;
+                while (Target_time > time)
+                {
+                    transform.localPosition = Vector3.Lerp(pos, new Vector3(pos.x, pos.y, 7f), 1f - (Target_time - time) / Target_time);
+                    time += Time.deltaTime;
+                    yield return null;
+                }
             }
 
             else
             {
-                while (transform.position.z > -6f)
-                    transform.position += new Vector3(0, 0, -3f);
+                var time = 0f;
+                while (Target_time > time)
+                {
+                    transform.localPosition = Vector3.Lerp(pos, new Vector3(pos.x, pos.y, -11f), 1f - (Target_time - time) / Target_time);
+                    time += Time.deltaTime;
+                    yield return null;
+                }
+
             }
-        }
     }
 }
