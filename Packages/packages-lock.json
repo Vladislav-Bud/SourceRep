@@ -102,6 +102,7 @@
       "url": "https://packages.unity.com"
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     "com.unity.postprocessing": {
       "version": "3.2.2",
       "depth": 0,
@@ -140,6 +141,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> parent of 812320e (Add Partical Level)
 =======
 >>>>>>> parent of 812320e (Add Partical Level)
     "com.unity.settings-manager": {
